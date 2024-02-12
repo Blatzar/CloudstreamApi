@@ -40,7 +40,7 @@ object APIHolder {
     private const val defProvider = 0
 
     // ConcurrentModificationException is possible!!!
-    val allProviders = listOf<MainAPI>()
+    val allProviders = mutableListOf<MainAPI>()
 
     fun initAll() {
         synchronized(allProviders) {
