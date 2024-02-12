@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+    alias(libs.plugins.jetbrainsKotlinJvm)
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    implementation(libs.niceHttp) // HTTP Lib
+    implementation(libs.jackson.module.kotlin) /* JSON Parser
+    ^ Don't Bump Jackson above 2.13.1 , Crashes on Android TV's and FireSticks that have Min API
+    Level 25 or Less. */
+    implementation(libs.kotlinx.coroutines.core)
+
+    // Extensions & Other Libs
+    implementation(libs.rhino) /* run JavaScript
+    ^ Don't Bump RhinoJS to 1.7.14,`NoClassDefFoundError` Occurs and Trailers won't play (even with Desugaring)
+     NewPipeExtractor Issue */
+
+    implementation(libs.fuzzywuzzy)
+}
