@@ -7,6 +7,7 @@ import com.lagradost.cloudstream3.utils.ExtractorApi
 import com.lagradost.cloudstream3.utils.extractorApis
 import android.util.Log
 import com.fasterxml.jackson.annotation.JsonProperty
+import android.content.Context
 
 const val PLUGIN_TAG = "PluginInstance"
 
@@ -16,7 +17,7 @@ abstract class Plugin {
      * @param context Context
      */
     @Throws(Throwable::class)
-    open fun load(context: Any) {
+    open fun load(context: Context) {
     }
 
     /**
