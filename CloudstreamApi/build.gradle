@@ -17,7 +17,7 @@ publishing {
         maven(MavenPublication) {
             groupId 'com.lagradost'
             artifactId 'cloudstream-api'
-            version '0.1.2'
+            version '0.1.3'
             from components.java
         }
     }
@@ -25,15 +25,16 @@ publishing {
 
 dependencies {
     implementation(libs.niceHttp) // HTTP Lib
-    implementation(libs.jackson.module.kotlin) /* JSON Parser
+    api(libs.jackson.module.kotlin) /* JSON Parser
     ^ Don't Bump Jackson above 2.13.1 , Crashes on Android TV's and FireSticks that have Min API
     Level 25 or Less. */
-    implementation(libs.kotlinx.coroutines.core)
+    api(libs.kotlinx.coroutines.core)
 
     // Extensions & Other Libs
-    implementation(libs.rhino) /* run JavaScript
+    api(libs.rhino) /* run JavaScript
     ^ Don't Bump RhinoJS to 1.7.14,`NoClassDefFoundError` Occurs and Trailers won't play (even with Desugaring)
      NewPipeExtractor Issue */
 
-    implementation(libs.fuzzywuzzy)
+    api(libs.fuzzywuzzy)
+    api(libs.jsoup)
 }
