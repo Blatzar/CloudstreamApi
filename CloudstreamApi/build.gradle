@@ -1,11 +1,26 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
     alias(libs.plugins.jetbrainsKotlinJvm)
 }
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
+}
+
+publishing {
+    repositories {
+        mavenLocal()
+    }
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.lagradost'
+            artifactId 'cloudstream-api'
+            version '0.1.0'
+            from components.java
+        }
+    }
 }
 
 dependencies {
