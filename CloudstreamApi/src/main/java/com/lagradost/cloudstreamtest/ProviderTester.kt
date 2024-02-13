@@ -80,7 +80,7 @@ open class ProviderTester(private val provider: MainAPI) {
             val item = mainPage.first().items.first().list.first()
             println("\n\nTesting Search: -------------------")
 
-            val searchResponses = testSearch(item.name)
+            val searchResponses = testSearch(query ?: item.name)
             assert(searchResponses.isNotEmpty())
 
             item
