@@ -30,7 +30,7 @@ In your build.gradle.kts:
             apk("com.lagradost:cloudstream3:pre-release")
         } else {
             // For running locally
-            implementation("com.github.Blatzar:CloudstreamApi:0.1.3")
+            implementation("com.github.Blatzar:CloudstreamApi:0.1.6")
         }
 
         // Rest of your code here...
