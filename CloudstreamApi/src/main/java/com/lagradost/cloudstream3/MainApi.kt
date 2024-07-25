@@ -681,7 +681,12 @@ enum class TvType(value: Int?) {
     AsianDrama(9),
     Live(10),
     NSFW(11),
-    Others(12)
+    Others(12),
+    Music(13),
+    AudioBook(14),
+
+    /** Won't load the built in player, make your own interaction */
+    CustomMedia(15),
 }
 
 public enum class AutoDownloadMode(val value: Int) {
