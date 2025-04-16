@@ -19,7 +19,7 @@ dependencyResolutionManagement {
         maven("https://jitpack.io")
     }
 }
-enableFeaturePreview("VERSION_CATALOGS")
+
 rootProject.name = "CloudstreamApi"
 include(":app")
 include(":CloudstreamApi")
