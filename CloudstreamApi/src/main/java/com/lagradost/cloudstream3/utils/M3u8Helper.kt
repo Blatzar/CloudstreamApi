@@ -53,15 +53,16 @@ object M3u8Helper2 {
             ), null
         )
             .map { stream ->
-                ExtractorLink(
+                newExtractorLink(
                     source,
                     name = name,
                     stream.streamUrl,
-                    referer,
-                    stream.quality ?: Qualities.Unknown.value,
-                    true,
-                    stream.headers,
-                )
+                    type = ExtractorLinkType.M3U8
+                ) {
+                    this.referer = referer
+                    this.quality = stream.quality ?: Qualities.Unknown.value
+                    this.headers = stream.headers
+                }
             }
     }
 
@@ -72,7 +73,7 @@ object M3u8Helper2 {
         Regex("""#EXT-X-STREAM-INF:(?:(?:.*?(?:RESOLUTION=\d+x(\d+)).*?\s+(.*))|(?:.*?\s+(.*)))""")
     private val TS_EXTENSION_REGEX =
         Regex("""#EXTINF:(([0-9]*[.])?[0-9]+|).*\n(.+?\n)""") // fuck it we ball, who cares about the type anyways
-        //Regex("""(.*\.(ts|jpg|html).*)""") //.jpg here 'case vizcloud uses .jpg instead of .ts
+    //Regex("""(.*\.(ts|jpg|html).*)""") //.jpg here 'case vizcloud uses .jpg instead of .ts
 
     private fun absoluteExtensionDetermination(url: String): String? {
         val split = url.split("/")
@@ -133,7 +134,7 @@ object M3u8Helper2 {
 
     private fun getParentLink(uri: String): String {
         val split = uri.split("/").toMutableList()
-        split.removeLast()
+        split.removeAt(split.lastIndex)
         return split.joinToString("/")
     }
 
